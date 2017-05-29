@@ -75,16 +75,18 @@ export interface User {
         <kendo-grid-column field="Discontinued" editor="boolean" title="Discontinued"></kendo-grid-column>
         <kendo-grid-column field="UnitsInStock" editor="numeric" title="Units In Stock"></kendo-grid-column>
         <kendo-grid-command-column title="command" width="220">
-            <ng-template kendoGridCellTemplate let-dataItem >
+            <ng-template kendoGridCellTemplate let-isNew="isNew">
+                <button kendoGridEditCommand class="k-primary">Edit</button>
+                <button kendoGridRemoveCommand>Remove</button>
+                <button kendoGridSaveCommand [disabled]="formGroup?.invalid">{{ isNew ? 'Add' : 'Update' }}</button>
+                <button kendoGridCancelCommand>{{ isNew ? 'Discard changes' : 'Cancel' }}</button>
                 <kendo-combobox [data]="listItems" [allowCustom]="allowCustom"></kendo-combobox>
-                <button kendoButton (click)="doEdit(dataItem)" [bare]="true" [icon]="'edit'"></button>
-                <button kendoButton (click)="doTrash(dataItem)" [bare]="true" [icon]="'trash'"></button>
             </ng-template>
         </kendo-grid-command-column>
       </kendo-grid>
 
     <p> New Grid</p>
-
+      
     <kendo-grid [data]="gridData" [rowClass]="rowCallback">
         <kendo-grid-column field="ProductID" title="Product ID" width="120">
         </kendo-grid-column>
