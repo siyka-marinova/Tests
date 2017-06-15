@@ -22,6 +22,8 @@ import { DropDownsModule } from '@progress/kendo-angular-dropdowns';
     BrowserAnimationsModule,
     BrowserModule,
     GridModule,
+    FormsModule,
+    ButtonsModule,
     DateInputsModule,
     DropDownsModule,
     PDFModule,
